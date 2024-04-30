@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <article>
-  <header class="mb-16">
+  <header class="mb-16" style="font-family: 'Noto Serif SC'">
     <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
 
     {{ if ne .Type "page" }}
@@ -19,7 +19,7 @@
     {{ end }}
   </header>
 
-  <section>{{ .Content }}</section>
+  <section style="font-family: 'Noto Serif SC'">{{ .Content }}</section>
 
   <!-- Post Tags -->
   {{ if .Params.tags }}
@@ -104,27 +104,21 @@
   <!-- mermaid -->
   {{- partial "mermaid.html" . -}}
 
-  <!-- giscus comment -->
-  {{ if and site.Params.giscus.repo (not (eq .Params.comments false)) }}
-  <div class="giscus mt-24"></div>
-  <script
-    src="https://giscus.app/client.js"
-    data-repo="{{ site.Params.giscus.repo }}"
-    data-repo-id="{{ site.Params.giscus.repoId }}"
-    data-category="{{ site.Params.giscus.category }}"
-    data-category-id="{{ site.Params.giscus.categoryId }}"
-    data-mapping="{{ site.Params.giscus.mapping | default (print `pathname`) }}"
-    data-strict="{{ site.Params.giscus.strict | default (print `1`) }}"
-    data-reactions-enabled="{{ site.Params.giscus.reactionsEnabled | default (print `0`) }}"
-    data-emit-metadata="{{ site.Params.giscus.emitMetadata | default (print `0`) }}"
-    data-input-position="{{ site.Params.giscus.inputPosition | default (print `top`) }}"
-    data-theme="{{ site.Params.giscus.theme | default (print `light`) }}"
-    data-lang="{{ site.Params.giscus.lang | default (print `en`) }}"
-    data-loading="{{ site.Params.giscus.loading | default (print `lazy`) }}"
-    crossorigin="anonymous"
-    async
-  ></script>
-  {{ end }}
+  <!-- waline comment -->
+  <link rel="stylesheet" href="https://unpkg.com/@waline/client@v2/dist/waline.css">
+  <div class="col-lg-8 offset-lg-2 col-md-10 offset-md-1" style="margin-top: 32px;">
+      <div id="waline-container"></div>
+  </div>
+  <script type="module">
+      import { init } from 'https://unpkg.com/@waline/client@v2/dist/waline.mjs';
+      init({
+          el: '#waline-container',
+          serverURL: 'https://blogcomment.soulter.top/',
+          emoji: [
+            '//unpkg.com/@waline/emojis@1.2.0/bilibili'
+          ]
+      });
+  </script>
 </article>
 
 {{ end }}

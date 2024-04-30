@@ -10,7 +10,3 @@ demosite = "https://hugo-paper.vercel.app"
 tags = ["Responsive", "Simple", "Clean", "Light", "White", "Blog"]
 features = ["Responsive", "One Column", "Blog"]
 min_version = "0.57.1"
-
-[author]
-  name = "nanxiaobei"
-  homepage = "https://lee.so/"

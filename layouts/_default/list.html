@@ -26,7 +26,7 @@
     class="mr-5 shrink-0 rounded-full border-[0.5px] border-black/10 bg-white/50 p-3 shadow dark:bg-white/[15%]"
   >
     <img
-      class="my-0 aspect-square w-16 rounded-full !bg-black/5 hover:animate-spin dark:!bg-black/80"
+      class="my-0 aspect-square w-16 rounded-full !bg-black/5 dark:!bg-black/80"
       src="{{ $avatar_url }}"
       alt="{{ site.Params.name | default site.Title }}"
     />
@@ -46,7 +46,7 @@
 
 {{ end }}
 
-<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0">
+<section class="relative my-10 first-of-type:mt-0 last-of-type:mb-0" style="font-family: 'Noto Serif SC'">
   {{ if gt .Weight 0 }}
   <span
     class="mb-2 ml-px inline-block text-[0.8rem] font-medium uppercase tracking-wider text-[#ff3b2d] opacity-70"
@@ -54,6 +54,19 @@
   >
   {{ end }}
   <h2 class="!my-0 pb-1 font-bold !leading-none">{{ .Title }}</h2>
+
+  {{ if .Params.tags }}
+  <div style="margin-top: 4px;">
+    {{ range .Params.tags }} {{ $href := print (absURL "tags/") (urlize .) }}
+    <a
+      class="listtags"
+      href="{{ $href }}"
+      >{{ . }}</a
+    >
+    {{ end }}
+  </div>
+  {{ end }}
+
   <time class="text-sm antialiased opacity-60"
     >{{ .Date | time.Format ":date_medium" }}</time
   >

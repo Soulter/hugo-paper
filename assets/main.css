@@ -1977,10 +1977,6 @@ article .highlight > div table tr td:last-of-type {
   }
 }
 
-.hover\:animate-spin:hover {
-  animation: spin 1s linear infinite;
-}
-
 .hover\:bg-black\/\[2\%\]:hover {
   background-color: rgb(0 0 0 / 2%);
 }
@@ -2094,3 +2090,22 @@ article .highlight > div table tr td:last-of-type {
 :is(:where(.dark) .dark\:hover\:bg-white\/\[3\%\]:hover) {
   background-color: rgb(255 255 255 / 3%);
 }
+
+.listtags {
+  background-color: #1d1d1d;
+  border-radius: 2rem;
+  color: #fff;
+  text-decoration: none;
+  padding: 4px 16px;
+  font-size: 0.775rem;
+}
+
+:is(:where(.dark) .listtags) {
+  background-color: #fff;
+  border-radius: 2rem;
+  color: #000;
+  text-decoration: none;
+  padding: 4px 16px;
+  font-size: 0.775rem;
+}
+
