@@ -1,7 +1,7 @@
 {{ define "main" }}
 
 <article>
-  <header class="mb-16" style="font-family: 'Noto Serif SC'">
+  <header class="mb-16 font">
     <h1 class="!my-0 pb-2.5">{{ .Title }}</h1>
 
     {{ if ne .Type "page" }}
@@ -19,7 +19,7 @@
     {{ end }}
   </header>
 
-  <section style="font-family: 'Noto Serif SC'">{{ .Content }}</section>
+  <section class="font">{{ .Content }}</section>
 
   <!-- Post Tags -->
   {{ if .Params.tags }}
